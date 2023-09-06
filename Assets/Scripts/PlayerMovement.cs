@@ -5,10 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [Header("Health Variables")]
-    [SerializeField] private float playerMaxHealth;
-    [SerializeField] private float playerCurrentHealth;
-
     [Header("Movement Variables")]
     [SerializeField] private float speedHorizontal;
     [SerializeField] private float speedJump;
@@ -24,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
-        playerCurrentHealth = playerMaxHealth;
     }
 
     //Idealmente alterar para inputs serem feitos no Update e funções q envolvem a aplicação de força e velocidade do Rigidbody no FixedUpdate
@@ -85,25 +80,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            TakeDamage(1);
-        }
-    }
-
-    void TakeDamage(int damage)
-    {
-        playerCurrentHealth -= damage;
-        if (playerCurrentHealth <= 0)
-        {
-            Dead();
-        }
-    }
-
-    void Dead()
-    {
-        Destroy(gameObject);
-    }
 }

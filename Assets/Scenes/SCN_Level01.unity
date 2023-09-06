@@ -982,6 +982,7 @@ GameObject:
   - component: {fileID: 1437421527}
   - component: {fileID: 1437421526}
   - component: {fileID: 1437421525}
+  - component: {fileID: 1437421528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1088,8 +1089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f6972afdfb3ce49ad83681af1c5ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHealth: 1
-  playerCurrentHealth: 1
   speedHorizontal: 15
   speedJump: 700
   runningSpeedHorizontal: 80
@@ -1167,6 +1166,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1437421528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437421521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356e67db73fe3924d828badd2f35d456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMaxHealth: 1
+  playerCurrentHealth: 1
 --- !u!1 &1554617201
 GameObject:
   m_ObjectHideFlags: 0
