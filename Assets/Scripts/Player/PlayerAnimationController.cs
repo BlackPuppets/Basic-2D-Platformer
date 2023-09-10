@@ -36,13 +36,11 @@ public class PlayerAnimationController : MonoBehaviour
     private void OnRunningRightAnimation()
     {
         animator.Play(RUNNING);
-        spriteRenderer.flipX = false;
     }
 
     private void OnRunningLeftAnimation()
     {
         animator.Play(RUNNING);
-        spriteRenderer.flipX = true;
     }
 
     private void OnAirAnimation()

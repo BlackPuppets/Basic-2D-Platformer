@@ -17,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeedVertical;
 
     private Rigidbody2D playerRigidbody2D;
+    private SpriteRenderer spriteRenderer;
 
     [Header("GroundedControl")]
     [SerializeField] public Transform top_left;
     [SerializeField] public Transform bottom_right;
     [SerializeField] public LayerMask ground_layers;
     private bool isGrounded = true;
+    private bool canChangeDirectionOnAir = false;
 
     #region animationEvents
     public delegate void OnIdle();
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     //Idealmente alterar para inputs serem feitos no Update e funções q envolvem a aplicação de força e velocidade do Rigidbody no FixedUpdate
@@ -66,7 +69,14 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalInput = true;
             if (isGrounded)
+            {
                 OnRunningRightEvent();
+                spriteRenderer.flipX = false;
+            }
+            else if(canChangeDirectionOnAir){
+                spriteRenderer.flipX = false;
+            }
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 playerRigidbody2D.AddForce(new Vector2(runningSpeedHorizontal, 0));
@@ -78,7 +88,14 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalInput = true;
             if (isGrounded)
+            {
                 OnRunningLeftEvent();
+                spriteRenderer.flipX = true;
+            }
+            else if (canChangeDirectionOnAir)
+            {
+                spriteRenderer.flipX = true;
+            }
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 playerRigidbody2D.AddForce(new Vector2(-runningSpeedHorizontal, 0));
@@ -130,6 +147,11 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, 0);
         }
 
+    }
+
+    public void CanChangeJumpDirection()
+    {
+        canChangeDirectionOnAir = !canChangeDirectionOnAir;
     }
 
 }
