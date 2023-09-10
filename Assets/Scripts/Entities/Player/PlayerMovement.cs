@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PlayerMovement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : GenericEntity
 {
 
     [Header("Movement Variables")]
