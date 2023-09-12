@@ -8,7 +8,6 @@ public class SOPlayer : ScriptableObject
     [Header("Movement Variables")]
     public float speedHorizontal;
     public float speedJump;
-    private bool horizontalInput = false;
     public float runningSpeedHorizontal;
 
     [Header("MaxSpeed")]
