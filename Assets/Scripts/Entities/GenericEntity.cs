@@ -5,18 +5,17 @@ using UnityEngine;
 public class GenericEntity : MonoBehaviour
 {
     [Header("Health Variables")]
-    [SerializeField] private float maxHealth = 1;
-    [SerializeField] private float currentHealth = 1;
+    [SerializeField] private SOEntity soEntity;
 
     void Awake()
     {
-        currentHealth = maxHealth;
+        soEntity.currentHealth = soEntity.maxHealth;
     }
 
     public virtual void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
+        soEntity.currentHealth -= damage;
+        if (soEntity.currentHealth <= 0)
         {
             Dead();
         }

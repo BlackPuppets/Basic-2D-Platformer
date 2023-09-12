@@ -8,8 +8,13 @@ public class ItemManager : MonoBehaviour
 {
     public static ItemManager instance;
 
+    [Header("SO_Instances")]
+    [SerializeField] private SOInt coins;
+    [SerializeField] private SOInt superCoins;
+
+    [Header("SO_UI_References")]
     [SerializeField] private TextMeshProUGUI coinText;
-    private int coins;
+    [SerializeField] private TextMeshProUGUI superCoinText;
 
     private void Awake()
     {
@@ -26,13 +31,21 @@ public class ItemManager : MonoBehaviour
 
     private void ResetItems()
     {
-        coins = 0;
+        coins.value = 0;
+        superCoins.value = 0;
     }
 
     public void AddCoins(int amount = 1)
     {
-        coins += amount;
-        coinText.text = "x " + coins.ToString();
+        coins.value += amount;
+        coinText.text = "x " + coins.value.ToString();
+
+    }
+
+    public void AddSuperCoins(int amount = 1)
+    {
+        superCoins.value += amount;
+        superCoinText.text = "x " + superCoins.value.ToString();
 
     }
 }

@@ -6,15 +6,8 @@ using static PlayerMovement;
 public class PlayerMovement : GenericEntity
 {
 
-    [Header("Movement Variables")]
-    [SerializeField] private float speedHorizontal;
-    [SerializeField] private float speedJump;
+    [SerializeField] private SOPlayer soPlayer;
     private bool horizontalInput = false;
-    [SerializeField] private float runningSpeedHorizontal;
-
-    [Header("MaxSpeed")]
-    [SerializeField] private float maxSpeedHorizontal;
-    [SerializeField] private float maxSpeedVertical;
 
     private Rigidbody2D playerRigidbody2D;
     private SpriteRenderer spriteRenderer;
@@ -79,10 +72,10 @@ public class PlayerMovement : GenericEntity
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                playerRigidbody2D.AddForce(new Vector2(runningSpeedHorizontal, 0));
+                playerRigidbody2D.AddForce(new Vector2(soPlayer.runningSpeedHorizontal, 0));
                 return;
             }
-            playerRigidbody2D.AddForce(new Vector2(speedHorizontal, 0));
+            playerRigidbody2D.AddForce(new Vector2(soPlayer.speedHorizontal, 0));
         }
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
@@ -98,10 +91,10 @@ public class PlayerMovement : GenericEntity
             }
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                playerRigidbody2D.AddForce(new Vector2(-runningSpeedHorizontal, 0));
+                playerRigidbody2D.AddForce(new Vector2(-soPlayer.runningSpeedHorizontal, 0));
                 return;
             }
-            playerRigidbody2D.AddForce(new Vector2(-speedHorizontal, 0));
+            playerRigidbody2D.AddForce(new Vector2(-soPlayer.speedHorizontal, 0));
         }
         else if (!horizontalInput){
             StopHorizontalMovement();
@@ -111,7 +104,7 @@ public class PlayerMovement : GenericEntity
 
     private void ControlMaxSpeed()
     {
-        playerRigidbody2D.velocity = new Vector2(Mathf.Clamp(playerRigidbody2D.velocity.x, -maxSpeedHorizontal, maxSpeedHorizontal), Mathf.Clamp(playerRigidbody2D.velocity.y, -maxSpeedVertical, maxSpeedVertical));
+        playerRigidbody2D.velocity = new Vector2(Mathf.Clamp(playerRigidbody2D.velocity.x, -soPlayer.maxSpeedHorizontal, soPlayer.maxSpeedHorizontal), Mathf.Clamp(playerRigidbody2D.velocity.y, -soPlayer.maxSpeedVertical, soPlayer.maxSpeedVertical));
     }
 
     private void StopHorizontalMovement()
@@ -127,7 +120,7 @@ public class PlayerMovement : GenericEntity
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            playerRigidbody2D.AddForce(new Vector2(0, speedJump));
+            playerRigidbody2D.AddForce(new Vector2(0, soPlayer.speedJump));
             OnJumpingEvent();
         }
     }
