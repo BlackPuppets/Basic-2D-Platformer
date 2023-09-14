@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GenericCollectable : MonoBehaviour
 {
+    [SerializeField] protected Transform particleEffect;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -18,5 +20,9 @@ public class GenericCollectable : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void OnCollect() { }
+    protected virtual void OnCollect() {
+        PlayEffect();
+    }
+    
+    protected virtual void PlayEffect() { }
 }

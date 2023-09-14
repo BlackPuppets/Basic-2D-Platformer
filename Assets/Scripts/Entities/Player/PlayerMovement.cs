@@ -12,6 +12,8 @@ public class PlayerMovement : GenericEntity
     private Rigidbody2D playerRigidbody2D;
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] public ParticleSystem jumpParticleSystem;
+
     [Header("GroundedControl")]
     [SerializeField] public Transform top_left;
     [SerializeField] public Transform bottom_right;
@@ -121,6 +123,7 @@ public class PlayerMovement : GenericEntity
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             playerRigidbody2D.AddForce(new Vector2(0, soPlayer.speedJump));
+            jumpParticleSystem.Play();
             OnJumpingEvent();
         }
     }

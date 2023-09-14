@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 3343996511
     locked: 0
+  - name: Ground
+    uniqueID: 751823449
+    locked: 0
   - name: Objects
     uniqueID: 4071561429
     locked: 0
@@ -53,7 +56,4 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3306180153
-    locked: 0
-  - name: Ground
-    uniqueID: 751823449
     locked: 0

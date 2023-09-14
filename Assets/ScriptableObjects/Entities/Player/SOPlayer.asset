@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb8a704553cfee43935fb56317e6366, type: 3}
   m_Name: SOPlayer
   m_EditorClassIdentifier: 
-  speedHorizontal: 4
+  speedHorizontal: 10
   speedJump: 700
   runningSpeedHorizontal: 25
-  maxSpeedHorizontal: 8
+  maxSpeedHorizontal: 10
   maxSpeedVertical: 20
